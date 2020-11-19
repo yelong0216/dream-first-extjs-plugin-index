@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.yelong0216.dream.first</groupId>
 	<artifactId>dream-first-extjs-plugin-index</artifactId>
-	<version>2.0.0</version>
+	<version>2.1.0</version>
 	<name>dream-first-extjs-plugin-index</name>
 	<description>dreamfirst-extjs首页插件</description>
 	<url>https://github.com/yelong0216/dream-first-extjs-plugin-index.git</url>
@@ -24,7 +24,7 @@
 		<url>https://github.com/yelong0216/dream-first-extjs-plugin-index</url>
 	</scm>
 	<properties>
-		<dream-first.version>[2.0.0,2.1.0)</dream-first.version>
+		<dream-first.version>[2.1.0,2.2.0)</dream-first.version>
 		<dream-first-extjs.version>${dream-first.version}</dream-first-extjs.version>
 	</properties>
 	<dependencies>
@@ -32,19 +32,6 @@
 			<groupId>com.github.yelong0216.dream.first</groupId>
 			<artifactId>dream-first-extjs</artifactId>
 			<version>${dream-first-extjs.version}</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.7.0-M1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.47</version><!--$NO-MVN-MAN-VER$ -->
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<profiles>
@@ -56,24 +43,14 @@
 					<resource>
 						<directory>src/main/java</directory>
 						<includes>
-							<include>**/*.properties</include>
-							<include>**/*.xml</include>
-							<include>**/*.tld</include>
-							<include>**/*.yml</include>
-							<include>**/*.ftl</include>
-							<include>**/*.factories</include>
+							<include>**/*.*</include>
 						</includes>
 						<filtering>false</filtering>
 					</resource>
 					<resource>
 						<directory>src/main/resources</directory>
 						<includes>
-							<include>**/*.properties</include>
-							<include>**/*.xml</include>
-							<include>**/*.tld</include>
-							<include>**/*.yml</include>
-							<include>**/*.ftl</include>
-							<include>**/*.factories</include>
+							<include>**/*.*</include>
 						</includes>
 						<filtering>false</filtering>
 					</resource>

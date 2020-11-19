@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="ie=10">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript">
+	var loginUsername = "${SESSION_LOGIN_USER.username}";
+	var loginUserRealName = "${SESSION_LOGIN_USER.realName}";
+</script>
+<title>${SESSION_LOGIN_USER.realName}的管理工具</title>
+<link rel="stylesheet"
+	href="${STATIC_RESOURCES_ROOT_PATH}/css/bootstrap.min.css">
+<jsp:include page="${COMMONLIB_PATH}"></jsp:include>
+<script type="text/javascript">
+	var homePageIndex = ModuleServiceInterface.homePageIndex;
+</script>
+<script src="${STATIC_RESOURCES_ROOT_PATH}/js/jqs.js"
+	type="text/javascript" charset="utf-8"></script>
+<script src="${STATIC_RESOURCES_ROOT_PATH}/js/bootstrap.js"
+	type="text/javascript" charset="utf-8"></script>
+<script src="${STATIC_RESOURCES_ROOT_PATH}/js/jq.js"
+	type="text/javascript" charset="utf-8"></script>
+<script src="${STATIC_RESOURCES_ROOT_PATH}/js/popper.js"
+	type="text/javascript" charset="utf-8"></script>
+<script src="${THIS_PROJECT_ROOT_PATH}/icon/icon" type="text/javascript"></script>
+<script type="text/javascript"
+	src="${STATIC_RESOURCES_ROOT_PATH}/js/util/sha1.js"></script>
+<script type="text/javascript"
+	src="${STATIC_RESOURCES_ROOT_PATH}/js/util/des3.js"></script>
+<link
+	href="${THIS_PROJECT_ROOT_PATH}/resources/extjs/plugin/index/css/index.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class='information1'
+		style="position: fixed; width: 100%; height: 100%; z-index: 3; background: #9e9e9e24; display: none;">
+		<div class='information' style="display: none;">
+			<p
+				style="border-bottom: 1px solid #ccc; line-height: 60px; font-size: 20px;">
+				<span style="float: left;">账号信息</span style="float: right;"> <img
+					style="float: right; width: 30px; height: 30px; margin-top: 13px; margin-right: 10px;"
+					src="${STATIC_RESOURCES_ROOT_PATH}/images/other/错误.png" alt=""
+					class="hidden">
+			</p>
+			<p style="height: 40px; border-bottom: 1px solid #ccc; margin: 0"></p>
+			<p style="margin: 30px 0;">
+				账&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>${loginUsername}</span>
+			</p>
+			<p style="margin: 30px 0;">
+				姓&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>${loginUserRealName}</span>
+			</p>
+			<p style="margin: 30px 0;">
+				部&nbsp;门&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>${orgName}</span>
+			</p>
+		</div>
+	</div>
+	<div class="container-fluid" style="padding: 0; width: 100%;"
+		id="tensor">
+		<div id="p">
+			<div class="head_right">
+				<p>
+					<!-- <img src="${STATIC_RESOURCES_ROOT_PATH}/commonImages/logo.png"
+						alt=""
+						style="margin-top: -10px; margin-right: 10px; width: 76px; height: 26px;">
+					-->
+					${SESSION_LOGIN_USER.realName}的管理工具
+				</p>
+			</div>
+			<div class="head_left" style="float: right; margin-right: 20px;">
+				<div class="input-group mb-3" style="margin-top: 13px;">
+					<div class="input-group-append"
+						style="font-size: 14px; color: #fff;">
+						<p style="margin: 10px 0 0 25px; text-align: center;">
+							欢迎您，<span>${loginUserRealName}</span>
+						</p>
+					</div>
+					<div class="dropdown">
+						<img id="img"
+							src="${STATIC_RESOURCES_ROOT_PATH}/images/other/头像.png"
+							alt="" class="dropdown-toggle">
+						<div class="dropdown-menu">
+							<span class="dropdown-item">账号信息</span> <span
+								class="dropdown-item" onclick="modifyPassword();return false;">修改密码</span>
+							<span class="dropdown-item" onclick="logout()">退出登录</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="height: 65px;" class="top_hide"></div>
+			<div class="js">
+				<div class="row">
+					<div class="col-3" id="hide">
+						<div class="nav flex-column nav-pills" id="v-pills-tab"
+							role="tablist" aria-orientation="vertical">
+							<ul style="padding: 0;" id="parent_ul">
+
+
+								<li style="margin-top: 0;" class="li"><a
+									style="color: #fff;" class="nav-link active"
+									id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
+									role="tab" aria-controls="v-pills-home" aria-selected="true"
+									onclick="addTab('index',null,null,'index')"> <img
+										src="${STATIC_RESOURCES_ROOT_PATH}/images/icon/index.png"
+										alt="" style="margin-top: 7px">首页<!-- <img
+										src="/images/other/箭头_右.png" alt="" class="img_right"
+										style="float: right; margin-right: 18px; margin-top: 7px"> -->
+								</a></li>
+
+							</ul>
+						</div>
+
+					</div>
+
+					<div class="col">
+						<iframe id="indexTab" src="${THIS_PROJECT_ROOT_PATH}/indexTab"></iframe>
+					</div>
+
+				</div>
+
+				<div class="head" style="position: fixed; bottom: 0; left: 0;">
+					<div class="img">
+						<img src="${STATIC_RESOURCES_ROOT_PATH}/images/other/列表3.png"
+							alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript"
+		src="${THIS_PROJECT_ROOT_PATH}/resources/extjs/plugin/index/js/modifyPassword.js"></script>
+	<script
+		src="${THIS_PROJECT_ROOT_PATH}/resources/extjs/plugin/index/js/indexSystemMenu.js"
+		type="text/javascript" charset="utf-8"></script>
+	<script
+		src="${THIS_PROJECT_ROOT_PATH}/resources/extjs/plugin/index/js/index.js"
+		type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		/* 退出登录 */
+		/* function logout(){
+			Co.showConfirm("确定要退出吗？",function(btn){
+				if (btn == "ok") {
+					window.location = Co.urlAddToken("/logout");
+				}
+			});
+		} */
+		/*打开系统管理*/
+		function openSystemManager() {
+			Co
+					.windowOpenByToken("${THIS_PROJECT_ROOT_PATH}/systemManagerIndex");
+		}
+		/*打开邮箱*/
+		function openDraftInfo() {
+			addTab("draftInfoIndex", "草稿箱", "draftInfo",
+					ModuleServiceInterface.draftInfoIndex);
+		}
+	</script>
+	<script type="text/javascript">
+		Ext.onReady(function() {
+			var initState = "${SESSION_LOGIN_USER.initState}";
+			if (!("02" === initState)) {
+				modifyPassword(true);
+			}
+		});
+	</script>
+</body>
+
+</html>
